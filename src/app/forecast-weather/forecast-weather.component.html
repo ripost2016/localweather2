@@ -1,0 +1,11 @@
+<div>
+  <div class="row no-gutters text-center">
+    <div class="col" *ngFor="let day of forecast">
+      <div class="day">
+        <div> {{ day.dt*1000 | date }} </div>
+        <div><img [src]="linkIcon(day)"></div>
+        <div> {{ day.main.temp }} </div>
+      </div>
+    </div>
+  </div>
+</div>

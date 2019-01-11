@@ -1,0 +1,27 @@
+.wrap-current {
+  color: white;
+  background-image: url('../../assets/images/background.jpeg');
+  background-size: cover;
+}
+
+.velo-current {
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.temp {
+  text-align: right;
+  font-size: 40px;
+}
+
+.icon {
+  zoom: 175%;
+}
+
+.features {
+  text-align: left;
+}
+
+.features p {
+  margin: 0;
+}
