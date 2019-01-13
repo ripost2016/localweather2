@@ -9,17 +9,7 @@ const APPID = 'd9f2abfbec3ad3c7c4817814069c587e';
   providedIn: 'root'
 })
 export class WeatherService {
-  currentWeather = new BehaviorSubject({
-    // city: {
-    //   name: '--'
-    // },
-    // list: [
-    //   {
-    //     dt: Date.now(),
-    //     weather: [{ description: '--' }]
-    //   }
-    // ]
-  });
+  currentWeather = new BehaviorSubject({});
 
   constructor(private httpClient: HttpClient) {}
 
@@ -40,8 +30,12 @@ export class WeatherService {
 
   private getCurrentWeatherHelper(uriParams: string) {
     return this.httpClient.get(
-      `http://api.openweathermap.org/data/2.5/forecast?` +
-        `${uriParams}&appId=${APPID}&units=metric`
+      `http://api.openweathermap.org/data/2.5/forecast/daily?` +
+        `${uriParams}&appId=${APPID}&units=metric&cnt=8`
     );
+  }
+
+  formatTemp() {
+    return (temp: string) => Math.round(parseFloat(temp));
   }
 }

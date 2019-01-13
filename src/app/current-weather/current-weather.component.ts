@@ -8,8 +8,11 @@ import { WeatherService } from '../weather.service';
 })
 export class CurrentWeatherComponent implements OnInit {
   current: any;
+  formatTemp: any;
 
-  constructor(private weatherService: WeatherService) {}
+  constructor(private weatherService: WeatherService) {
+    this.formatTemp = weatherService.formatTemp();
+  }
 
   ngOnInit() {
     this.weatherService.currentWeather.subscribe(data => {

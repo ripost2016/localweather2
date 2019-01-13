@@ -17,7 +17,7 @@ export class CitysearchComponent implements OnInit {
     this.search.valueChanges
       .pipe(debounceTime(1000))
       .subscribe((searchValue: string) => {
-        if (!this.search.invalid) {
+        if (!this.search.invalid && this.search.value !== '') {
           const userInput = searchValue.split(',').map(s => s.trim());
 
           this.weatherService
@@ -28,6 +28,13 @@ export class CitysearchComponent implements OnInit {
             .subscribe(data => {
               console.log(data);
               this.weatherService.currentWeather.next(data);
+              localStorage.setItem(
+                'weather',
+                JSON.stringify({
+                  name: data['city'].name,
+                  country: data['city'].country
+                })
+              );
             });
         }
       });

@@ -8,13 +8,15 @@ import { WeatherService } from '../weather.service';
 })
 export class ForecastWeatherComponent implements OnInit {
   forecast: any;
+  dayTemp: any;
 
-  constructor(private weatherService: WeatherService) {}
+  constructor(private weatherService: WeatherService) {
+    this.dayTemp = weatherService.formatTemp();
+  }
 
   ngOnInit() {
     this.weatherService.currentWeather.subscribe(data => {
-      this.forecast = data['list'] ? data['list'].slice(1, 8) : [];
-      console.log(this.forecast);
+      this.forecast = data['list'] ? data['list'].slice(1) : [];
     });
   }
 
