@@ -3,7 +3,7 @@
     <div class="col" *ngFor="let day of forecast">
       <div [ngClass]="'day ' + day.weather[0].main.toLowerCase()">
         <div class="mb-2"> {{ day.dt*1000 | date: 'EEEE' | lowercase }} </div>
-        <div class="mb-2"><img [src]="linkIcon(day)"></div>
+        <div class="mb-2"><img class="icon-forecast" [src]="linkIcon(day)"></div>
         <div><span *ngIf="day.temp.day > 0">+</span>{{ dayTemp(day.temp.day) }}°</div>
       </div>
     </div>
